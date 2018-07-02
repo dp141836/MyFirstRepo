@@ -38,11 +38,11 @@ function validateForm(operation){
 	var returnValue=true;
 	var errorStr="";
 	var quantity = $('#quantity').val();
-	var itemId = $('#product').val();
-	var itemName = $('#productname').val();
+	var productid = $('#productid').val();
+	var productname = $('#productname').val();
 	//var salesRepId = $('#salesRepId').val();
 	var error =$('#error');
-	console.log('Quantity = '+quantity+' Product Id='+productid+", Product Name="+productname+");
+	console.log('Quantity = '+quantity+' Product Id='+productid+", Product Name="+productname);
 	/*$("#loading").attr("disabled","disabled").css({'cursor':'wait'});
 	if(!quantity.length){
 		console.log('qty is required');
@@ -117,9 +117,8 @@ function performOperation(operation,quantity,productid,productname){
 			data:
 				"operation="+operation+
 				"&quantity="+quantity+
-				"&itemId="+itemId+
-				"&itemName="+itemName+
-				"&relatedProdId="+relatedProdId,
+				"&itemId="+productid+
+				"&itemName="+productname,
 
 				success: function(data, textStatus, jqXHR) {
 					console.log(data);
@@ -149,7 +148,7 @@ function performOperation(operation,quantity,productid,productname){
 
 function populateTheGrid(operation,quantity,productid,productname){
 	
-		console.log('Populate Grid :: operation ='+operation+","+quantity+","+productid+","+productname+");
+		console.log('Populate Grid :: operation ='+operation+","+quantity+","+productid+","+productname);
 		var returnValue;
 		$.ajax({
 			url: "AddProduct",
@@ -158,7 +157,7 @@ function populateTheGrid(operation,quantity,productid,productname){
 				"operation="+operation+
 				"&quantity="+quantity+
 				"&productid="+productid+
-				"&productname="+productname+,
+				"&productname="+productname,
 	
 	
 				success: function(data, textStatus, jqXHR) {
@@ -186,7 +185,7 @@ function populateTheGrid(operation,quantity,productid,productname){
 			console.log( "word was saved" + e );
 		});
 }
-}
+
 function constructDataGrid(parsed){
 	var taggedData="<tr> " +
 			"<th>Quantity</th>" +
