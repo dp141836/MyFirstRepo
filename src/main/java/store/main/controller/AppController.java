@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import store.main.model.Product;
 import store.main.model.User;
@@ -130,7 +131,7 @@ public class AppController {
 	}*/
 	
 	@PostMapping("/AddProduct")
-	public void addProduct(@RequestParam("quantity") String quantity,@RequestParam("productid") String productid,@RequestParam("productname") String productname,HttpSession session,HttpServletRequest request) {
+	public @ResponseBody List<Product> addProduct(@RequestParam("quantity") String quantity,@RequestParam("productid") String productid,@RequestParam("productname") String productname,HttpSession session,HttpServletRequest request) {
 		session.setAttribute("productid", productid);
 		session.setAttribute("productname", productname);	
 		session.setAttribute("quantity", quantity);
@@ -138,6 +139,7 @@ public class AppController {
 		session.setAttribute("product", product);
 		List<Product> productList = userService.listMyProduct(product);
 		session.setAttribute("productList", productList);
+		return productList;
 		
 
 		
