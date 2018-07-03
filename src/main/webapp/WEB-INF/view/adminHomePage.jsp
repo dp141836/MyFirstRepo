@@ -78,7 +78,8 @@ List<Product> eList = (List<Product>)session.getAttribute("productList");
 		         			<div class="clear"></div>
                             <div class="spacer2"></div>
                             <div class="redText" id="error">
-                            </div>   
+                            
+                            <div id= results>Results here </div>
                   </div>
                   <div class="clear"></div>  
                   <div class="sharpblueBar">Added Products 
