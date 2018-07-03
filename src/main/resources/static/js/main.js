@@ -164,7 +164,7 @@ function populateTheGrid(operation,quantity,productid,productname){
 	
 					console.log("Data inside of Populategrid ::success"+data);
 					var parsed = data;
-					parsed = JSON.parse(parsed);
+					//parsed = JSON.parse(parsed);
 					console.log("populateTheGrid :: success"+parsed);
 					if(operation=='updateAdd')
 					{
@@ -172,7 +172,12 @@ function populateTheGrid(operation,quantity,productid,productname){
 						constructDataGrid(parsed);
 					}
 					else
-						constructDataGrid(parsed);
+						for (var index in data){
+							$('#results').append(data[index].productName);
+							console.log(data[index]);
+							//constructDataGrid(data[index]);
+						}
+						//constructDataGrid(parsed);
 	
 				},
 				error: function(jqXHR, textStatus, errorThrown){
