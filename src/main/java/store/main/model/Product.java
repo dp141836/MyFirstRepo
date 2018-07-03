@@ -1,5 +1,7 @@
 package store.main.model;
 
+
+
 public class Product {
 	
 	private String productid;
@@ -43,5 +45,14 @@ public class Product {
 			this.quantity = quantity;
 		}
 
+		public boolean areSameProduct(Product prodct) {
+			if(prodct!= null && this.productid.equals(prodct.productid) && this.productname.equals(prodct.productname) && this.quantity.equals(prodct.quantity)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			
+		}
 
 }

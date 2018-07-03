@@ -112,7 +112,7 @@ function performOperation(operation,quantity,productid,productname){
 	console.log('performOperation='+operation+',Product Id='+productid);
 	if(operation=='delete'){
 		$.ajax({
-			url: "AddProduct",
+			url: "DeleteOperation",
 			type: "POST",
 			data:
 				"operation="+operation+
@@ -150,12 +150,19 @@ function populateTheGrid(operation,quantity,productid,productname){
 	
 		console.log('Populate Grid :: operation ='+operation+","+quantity+","+productid+","+productname);
 		var returnValue;
+		var target;
+		if(operation=='delete'){
+			target = 'DeleteProduct';	
+		}
+		else{
+			target = 'AddProduct'
+		}
+		
 		$.ajax({
-			url: "AddProduct",
+			url: target,
 			type: "POST",
-			data:
-				"operation="+operation+
-				"&quantity="+quantity+
+			data:				
+				"quantity="+quantity+
 				"&productid="+productid+
 				"&productname="+productname,
 	

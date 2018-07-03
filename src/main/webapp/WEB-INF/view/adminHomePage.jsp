@@ -4,9 +4,9 @@
 <%@ page import="store.main.model.Product"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<% 
-List<Product> eList = (List<Product>)session.getAttribute("productList");
-%>
+<%-- <% 
+List<Product> eList = (List<Product>)application.getAttribute("productList");
+%> --%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -74,6 +74,7 @@ List<Product> eList = (List<Product>)session.getAttribute("productList");
                     </div>
 		                    <div class="floatLeft selectWidth15">
 		                        <input type="button" id="loading" value=" Quick Add " class="greenButton"  onclick="validateForm('add')">
+		                         <input type="button" id="loading" value=" Quick Delete " class="greenButton"  onclick="validateForm('delete')">
 		                    </div> 
 		         			<div class="clear"></div>
                             <div class="spacer2"></div>

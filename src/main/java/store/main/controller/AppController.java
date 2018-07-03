@@ -132,17 +132,22 @@ public class AppController {
 	
 	@PostMapping("/AddProduct")
 	public @ResponseBody List<Product> addProduct(@RequestParam("quantity") String quantity,@RequestParam("productid") String productid,@RequestParam("productname") String productname,HttpSession session,HttpServletRequest request) {
-		session.setAttribute("productid", productid);
-		session.setAttribute("productname", productname);	
-		session.setAttribute("quantity", quantity);
+		//session.setAttribute("productid", productid);
+		//session.setAttribute("productname", productname);	
+		//session.setAttribute("quantity", quantity);
 		Product product = userService.saveMyProduct(quantity, productid, productname);
-		session.setAttribute("product", product);
+		//session.setAttribute("product", product);
 		List<Product> productList = userService.listMyProduct(product);
-		session.setAttribute("productList", productList);
+		//session.getServletContext().setAttribute("productList", productList);
 		return productList;
-		
-
-		
+	}
+	
+	@PostMapping("/DeleteProduct")
+	public @ResponseBody List<Product> deleteProduct(@RequestParam("quantity") String quantity,@RequestParam("productid") String productid,@RequestParam("productname") String productname,HttpSession session,HttpServletRequest request) {
+		Product product = userService.saveMyProduct(quantity, productid, productname);
+		List<Product> productList = userService.removeProduct(product);
+		//session.getServletContext().setAttribute("productList", productList);
+		return productList;
 	}
 
 }

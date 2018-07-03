@@ -27,8 +27,13 @@
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
       <scope>provided</scope>
-    </dependency>    
-	</dependencies>
+    </dependency>
+    <dependency>
+    	<groupId>org.scala-lang</groupId>
+    	<artifactId>scala-library</artifactId>
+    	<version>2.11.0</version>
+    </dependency>
+  </dependencies>
 	  <dependencyManagement>
   	<dependencies>
   		<dependency>
