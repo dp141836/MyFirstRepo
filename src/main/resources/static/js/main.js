@@ -165,6 +165,13 @@ function populateTheGrid(operation,quantity,productid,productname){
 					console.log("Data inside of Populategrid ::success"+data);
 					var parsed = data;
 					//parsed = JSON.parse(parsed);
+					var taggedData=	"<tr> " +
+					"<th>Quantity</th>" +
+					"<th>Product Id</th>" +
+					"<th>Product Name</th>" +
+					"<th>Delete </th>" +
+					"<th>Update</th>" +
+					"</tr>" ;
 					console.log("populateTheGrid :: success"+parsed);
 					if(operation=='updateAdd')
 					{
@@ -173,9 +180,15 @@ function populateTheGrid(operation,quantity,productid,productname){
 					}
 					else
 						for (var index in data){
-							$('#results').append(data[index].productName);
+							
+							taggedData += "<tr>" +
+							"<td>"+data[index].quantity+"</td>"+
+							"<td>"+data[index].productId+"</td>"
+							+"<td>"+data[index].productName+"</td>";
+							
+							$("#instructionText").html(taggedData);
 							console.log(data[index]);
-							//constructDataGrid(data[index]);
+							//constructGrid(data[index]);
 						}
 						//constructDataGrid(parsed);
 	
@@ -189,6 +202,29 @@ function populateTheGrid(operation,quantity,productid,productname){
 		}).done(function( e ) {
 			console.log( "word was saved" + e );
 		});
+}
+
+function constructGrid(product){
+	var taggedData="<tr> " +
+			"<th>Quantity</th>" +
+			"<th>Item Id</th>" +
+			"<th>Item Name</th>" +
+			"<th>Delete </th>" +
+			"<th>Update</th>" +
+			"</tr>";
+	$.each(product.productJSON,function(i, item){
+		taggedData +="<tr>" +
+		"<td>"+item.quantity+"</td>"+
+		"<td>"+item.productid+"</td>"
+		+"<td>"+item.productName+"</td>";
+
+		taggedData +="<td class='center trashBlack' onclick=performOperation('delete','"+quantity+"','"+product.productid+"','"+product.productname+"')></td>" +
+
+		"<td > <input class='center available' onclick=performOperation('update','"+product.quantity+"','"+product.productid+"','"+product.productName+"')></td>" +
+		"</tr>"
+	});
+	$("#instructionText").html(taggedData);
+	resetTheFormData();
 }
 
 function constructDataGrid(parsed){
